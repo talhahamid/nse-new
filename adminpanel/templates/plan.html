@@ -1,0 +1,101 @@
+{% load static %}
+{% include "header.html" %} 
+{% include "sidepanel.html" %}
+ 
+
+
+<div class="container">
+    <div class="row">
+  
+      {% for plan in plan %}
+      <div class="col">    
+        <div class="card-body">
+          <div class="card" style="width: 11rem;">
+            <hr style="background-color: black;">
+             <h4>{{plan.name}}</h4>
+            <hr style="background-color: black;">
+            <img style=" height:100px;" src=" static/images/{{plan.img}} " class="card-img-top" alt="Image">
+            <div class="card-body">
+                <hr style="background-color:   black;">
+                <b>Duration</b>: {{plan.duration}}
+                <b>Price</b>: {{plan.price}}
+                <b>Description</b>: <br>{{plan.description}}
+                <hr style="background-color: black;">
+              <form action="planstore" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="price" value="{{plan.price}}">
+                <input type="hidden" name="plan_name" value={{plan.name}}>
+                <button class="btn btn-danger">BUY </button>
+              </form>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+  </div>
+ </div>
+
+<div> 
+<br>
+  
+{% for messages in messages %}<hr>
+  <h5 style="padding: 25px;color:darkgreen">{{ messages}}</h5><hr>
+{% endfor %}
+
+</div>   
+
+<!--    
+      <div class="col">    
+        <div class="card-body">
+          <div class="card" style="width: 11rem;">
+            <hr style="background-color: black;">
+            <h4>{{plan.name}}</h4>
+            <hr style="background-color: black;">
+            <img style=" height:200px;" src="{% static '/images/silver.webp' %}" class="card-img-top" alt="Image">
+            <div class="card-body">
+                <hr style="background-color: black;">
+                <h5>{{plan.name}}</h5>
+                Price: {{plan.price}}
+                Description: {{plan.description}}
+                <hr style="background-color: black;">
+                <form action="planstore" method="post">
+                  {% csrf_token %}
+                  <input type="hidden" name="price" value="RS 3000">
+                  <input type="hidden" name="plan_name" value="Silver">
+                  <button type="submit" class="btn btn-danger">BUY </button>
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+       <div class="col">    
+        <div class="card-body">
+          <div class="card" style="width: 11rem;">
+            <hr style="background-color: black;">
+            <h4>Gold PLAN</h4>
+            <hr style="background-color: black;">
+            <img style=" 
+            height:200px;" src="{% static '/images/gold.png' %}" class="card-img-top" alt="Image">
+            <div class="card-body">
+                <hr style="background-color: black;">
+                <h5>6 Months</h5>
+                Price: RS 6000
+                <hr style="background-color: black;">
+                <form action="planstore" method="post">
+                  {% csrf_token %}
+                  <input type="hidden" name="price" value="RS 6000">
+                  <input type="hidden" name="plan_name" value="Gold">
+                  <button type="submit" class="btn btn-danger">BUY </button>
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+   -->
+    </div>   
+</div>
+
+{% include 'footer.html' %}
+ 

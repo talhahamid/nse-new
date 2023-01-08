@@ -1,0 +1,122 @@
+{% load static %}
+{% include "header.html" %}
+{% include "sidepanel.html" %}
+<script>  
+    $(document).ready(function(){  
+        $("#changepasswordform").validate({
+            rules: {
+                current_password: {
+                    required: true,
+                    minlength: 6
+                },
+                new_password: {
+                    required: true,
+                    minlength: 6
+                },
+                confirm_password: {
+                    required: true,
+                    minlength: 6,
+                    equalTo: "#new_password"
+                }
+            },
+            messages: {
+                current_password: {
+                    required: "specify current password",
+                    minlength: "minimum length must be 6 character.............."
+                },
+                new_password: {
+                    required: "specify new password",
+                    minlength: "minimum length must be 6 character..............."
+                },
+                confirm_password: {
+                    required: "specify confirm password",
+                    minlength: "minimum length must be 6 character..............",
+                    equalTo: "new password and confirm password must be same "
+                }
+            }  
+        });
+    }); 
+</script> 
+<div class="container">
+	<div class="row">
+		<div class="col">
+			<table  class="table card">
+				
+			<tr>
+				<td>
+					<tr>
+						<td>
+							<img style="width:25%" src="{% static 'images/admin.jpg' %}" >
+						</td>
+					</tr>
+					<tr>    
+						<td>                             
+							NAME:
+						</td> 
+										<td>{{pro.name}}</td> 
+					</tr>
+					<tr>
+						<td>                             
+							MOBILE:
+						</td> 
+										<td>{{pro.mobile}}</td> 
+					</tr>
+					<tr>
+						<td>                             
+							EMAIL:
+						</td>  
+										<td>{{pro.email}}</td>
+					</tr>
+					<tr>
+						<td>
+							CITY:
+						</td>
+									<td>{{pro.city}}</td>
+					</tr>    				
+					
+					<tr>
+						<td>   							
+							Pincode:
+						</td>
+									<td>{{pro.pincode}}</td>  
+					</tr> 
+					<tr>
+						<td>   							
+							Address:
+						</td>
+									<td>{{pro.address}}</td>  
+					</tr>                               
+				</td>
+				<td></td>
+				<td></td>
+			</tr>				
+			</table>
+		</div>
+		<div class="col"></div> 
+		<div class="col"></div>
+	</div>		
+
+<div class="sufee-login d-flex align-content-center flex-wrap">
+
+	<div class="login-form">
+
+	<h5>Change Password</h5><hr>
+	<form method="post" id="changepasswordform" action="<?php echo base_url('farmerschangepassword')?>" >
+		<input type="hidden" name="id" value="<?php echo $users['id']; ?>">
+			<label style="font-size: small;">Current Password</label>
+			<input style="width:300px" name="current_password" type="password" class="form-control">
+			<label style="font-size: small;">New Password</label>
+			<input style="width:300px;" name="new_password" type="password" class="form-control">
+			<label style="font-size: small;">Confirm Password</label>
+			<input style="width:300px;" name="confirm_password" type="password" class="form-control">
+			<br>
+		<button style="width:300px;" class="form-control btn btn-primary">Submit</button><br>
+	</form>
+
+	</div>
+	</div>
+</div>
+</div>
+
+<hr><br>
+{% include "footer.html" %}

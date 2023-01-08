@@ -1,0 +1,86 @@
+{% load static %}
+{% include "header.html" %}
+<!-- Left Panel -->
+{% include "sidepanel.html" %}
+<!-- Left Panel -->
+    
+ 
+   
+        <div class="breadcrumbs">
+            <div class="col-sm-4">
+                <div class="page-header float-left">
+                    <div class="page-title">
+                        <h3 style="color:black">{{data.name}} </h3>
+                    </div>
+                </div>
+            </div>
+             
+        </div> 
+            {{planData}}
+
+        <div class="content mt-3">
+             
+           <div class="col-sm-6 col-lg-3">
+                <div class="card text-black bg-flat-color-0">
+                    <div class="card-body pb-0">
+                        {% for plan in plan %}
+                            {% if plan.plan_name == "Standard" %}
+                                <h3 class="mb=0">{{plan.plan_name}}</h3>
+                                <h4 class="mb-0">{{plan.price}}</h4>
+                                <p class="mb-0">{{plan.end_date}}</p>
+                                <hr>
+                            {% endif %}
+                        {% endfor %}    
+                    </div>
+                </div>
+            </div>
+            
+
+         
+            
+            {% for plan in plan %} 
+            {% if plan.plan_name == "Silver" %} 
+           <div class="col-sm-6 col-lg-3">
+                <div class="card text-black bg-secondary">
+                    <div class="card-body pb-0">
+                        
+                        <h3 class="mb=0" style="color:white">{{plan.plan_name}}</h3>
+                        <h4 class="mb-0" style="color:white">{{plan.price}}</h4>
+                        <h5 class="mb-0" style="color:white">{{plan.end_date}}</h5>
+                             <br>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+            
+            {% for plan in plan %} 
+            {% if plan.plan_name == "Gold" %}
+            <div class="col-sm-6 col-lg-3">
+                <div class="card text-black bg-warning">
+                    <div class="card-body pb-0">
+                        
+                        <h3 class="mb=0">{{plan.plan_name}}</h3>
+                        <h4 class="mb-0">{{plan.price}}</h4>
+                        <p class="mb-0">{{plan.end_date}}</p>
+                        
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+  
+
+            <div class="col-sm-6 col-lg-3" style="float:right">
+                <div class="card text-black bg-danger"> 
+                    <div class="card-body pb-0">
+                        
+                        <h4 class="mb-0" style="color: white;">Standard:</h4>                         
+                        <h5 class="mb=0" style="color: white;">{{r}} Days Remaining</h5><br>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+{% include "footer.html" %}
